@@ -71,7 +71,7 @@ const processParameterPairChunk = async (
 
             exportVariable(parameterPairs[name], value);
             info(
-                `Env variable ${parameterPairs[name]} set with value from ssm parameterName ${name}`
+                `Env variable ${parameterPairs[name]} set with value from ssm parameterName ${name} value: ${value}`
             );
         }
     }
