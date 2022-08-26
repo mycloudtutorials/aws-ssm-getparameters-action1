@@ -101,6 +101,7 @@ const process = async (): Promise<void> => {
             withDecryption
         );
     }
+    exportVariable('GJ_NAME', 'GJ_VALUE');
 
     info("Job Complete");
 };
