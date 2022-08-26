@@ -65,9 +65,9 @@ const processParameterPairChunk = async (
                 continue;
             }
 
-            if (withDecryption) {
-                setSecret(value);
-            }
+            // if (withDecryption) {
+            //     setSecret(value);
+            // }
 
             exportVariable(parameterPairs[name], value);
             info(
