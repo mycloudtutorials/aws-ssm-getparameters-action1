@@ -1,6 +1,7 @@
 import {
     getInput,
     error,
+    debug,
     setSecret,
     exportVariable,
     info,
@@ -64,6 +65,8 @@ const processParameterPairChunk = async (
                 error(`Invalid parameter returned, name: ${name}`);
                 continue;
             }
+
+            debug(`The value returned is: ${value}`)
 
             // if (withDecryption) {
             //     setSecret(value);
