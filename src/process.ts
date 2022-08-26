@@ -5,6 +5,7 @@ import {
     setSecret,
     exportVariable,
     info,
+    setOutput
 } from "@actions/core";
 import chunk from "lodash.chunk";
 import {
@@ -12,6 +13,7 @@ import {
     GetParametersCommandInput,
     GetParametersCommand,
 } from "@aws-sdk/client-ssm";
+import { countReset } from "console";
 
 interface ActionParams {
     parameterPairs: [string, string][];
@@ -101,7 +103,8 @@ const process = async (): Promise<void> => {
             withDecryption
         );
     }
-    exportVariable('GJ_NAME', 'GJ_VALUE');
+    // exportVariable('GJ_NAME', 'GJ_VALUE');
+    setOutput('MY_NAME','GJ')
 
     info("Job Complete");
 };
