@@ -59,7 +59,13 @@ const processParameterPairChunk = async (
     const response = await client.send(command);
 
     if (response?.Parameters && response.Parameters.length > 0) {
+
         for (const responseParameter of response.Parameters) {
+
+            info(
+                `Response Parameter: ${JSON.stringify(responseParameter)}`
+            )
+
             const name = responseParameter?.Name;
             const value = responseParameter?.Value;
 
