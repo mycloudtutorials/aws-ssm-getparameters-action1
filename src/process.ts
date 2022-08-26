@@ -68,6 +68,7 @@ const processParameterPairChunk = async (
                 continue;
             }
 
+            console.log('The value returned for name:' + name + ' is ' + value)
             debug(`The value returned is: ${value}`)
 
             // if (withDecryption) {
