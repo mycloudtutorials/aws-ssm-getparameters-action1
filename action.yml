@@ -9,6 +9,9 @@ inputs:
         required: false
         description: 'Whether to decrypt SecretString SSM parameters. Defaults to true.'
         default: 'true'
+outputs:
+    MY_NAME:
+        description: Just a test
 
 runs:
     using: 'node12'
