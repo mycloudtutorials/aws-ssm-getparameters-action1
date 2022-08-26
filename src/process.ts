@@ -68,13 +68,10 @@ const processParameterPairChunk = async (
                 continue;
             }
 
-            console.log('The value returned for name:' + name + ' is ' + value)
-            debug(`The value returned is: ${value}`)
-
             // if (withDecryption) {
             //     setSecret(value);
             // }
-
+            setOutput(parameterPairs[name], value)
             exportVariable(parameterPairs[name], value);
             info(
                 `Env variable ${parameterPairs[name]} set with value from ssm parameterName ${name} value: ${value}`
