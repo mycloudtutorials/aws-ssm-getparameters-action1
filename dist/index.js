@@ -106,15 +106,17 @@ const processParameterPairChunk = (client, parameterPairChunk, withDecryption) =
     const response = yield client.send(command);
     if ((response === null || response === void 0 ? void 0 : response.Parameters) && response.Parameters.length > 0) {
         for (const responseParameter of response.Parameters) {
+            core_1.info(`Response Parameter: ${JSON.stringify(responseParameter)}`);
             const name = responseParameter === null || responseParameter === void 0 ? void 0 : responseParameter.Name;
             const value = responseParameter === null || responseParameter === void 0 ? void 0 : responseParameter.Value;
             if (!name || !value) {
                 core_1.error(`Invalid parameter returned, name: ${name}`);
                 continue;
             }
-            if (withDecryption) {
-                core_1.setSecret(value);
-            }
+            // if (withDecryption) {
+            //     setSecret(value);
+            // }
+            core_1.setOutput(parameterPairs[name], value);
             core_1.exportVariable(parameterPairs[name], value);
             core_1.info(`Env variable ${parameterPairs[name]} set with value from ssm parameterName ${name} value: ${value}`);
         }
@@ -130,6 +132,8 @@ const process = () => __awaiter(void 0, void 0, void 0, function* () {
     for (const parameterPairChunk of parameterPairChunks) {
         yield processParameterPairChunk(client, parameterPairChunk, withDecryption);
     }
+    // exportVariable('GJ_NAME', 'GJ_VALUE');
+    core_1.setOutput('MY_NAME', 'GJ');
     core_1.info("Job Complete");
 });
 exports.default = process;
